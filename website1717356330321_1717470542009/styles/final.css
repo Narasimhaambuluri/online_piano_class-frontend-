@@ -1,0 +1,573 @@
+/* Reset based on CSS Remedy */
+
+/* Global Remedies */
+
+/* Use border-box by default, globally */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/*
+  * Consistent line spacing...
+  * CSS Inline Layout Module Level 3: https://drafts.csswg.org/css-inline-3/#line-sizing-property
+  */
+html {
+  line-height: 1.6;
+}
+
+/* Remove the tiny space around the edge of the page */
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  /* Fonts */
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  /* Extra padding at top because of nav bar */
+  padding-top: 5rem;
+}
+
+/* Headings */
+
+/* Balance headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote {
+  /*text-wrap: balance;*/
+}
+
+/* Switch to rem units for headings */
+/* @@@ Initial values are based on existing browser defaults */
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.17rem;
+}
+h4 {
+  font-size: 1rem;
+}
+h5 {
+  font-size: 0.83rem;
+}
+h6 {
+  font-size: 0.67rem;
+}
+
+/* Keep h1 margins consistent, even when nested */
+h1 {
+  margin: 0.67em 0;
+}
+
+/* Typography */
+
+/* Overflow by default is bad */
+pre {
+  white-space: pre-wrap;
+}
+
+/*
+  * 1. Solid, thin horizontal rules
+  * 2. Remove Firefox `color: gray`
+  * 3. Remove default 1 pixel height, and common `overflow: hidden`
+  */
+hr {
+  border-style: solid;
+  border-width: 0.01em 0 0;
+  color: inherit;
+  height: 0;
+  overflow: visible;
+}
+
+/* Embedded Elements */
+
+/*
+  * 1. Block display is usually what we want
+  * 2. Remove strange space-below when inline
+  * 3. Responsive by default
+  */
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+  * Maintain intrinsic aspect ratios when `max-width` is applied
+  * (iframe, embed, and object have no intrinsic ratio, set height explicitly)
+  */
+svg,
+video,
+canvas {
+  height: auto;
+}
+
+/*
+   * From @csswizardry 
+   * https://twitter.com/csswizardry/status/1717841334462005661
+   * 10/27/2023
+   * max-width & height: Allow for fluid image sizing while maintaining aspect ratio governed by width/height attributes
+   * vertical-align: Remove ‘phantom’ whitespace
+   * font-style: Italicise alt text to visually offset it from surrounding copy
+   * background-repeat & background-size: Set up backgrounds for optional LQIP
+   * shape-margin: Set up margin for optional `shape-outside`
+   */
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 0.75rem;
+}
+
+/*
+  * There is no good reason elements default to 300 pixels,
+  * and audio files are unlikely to come with a width attribute
+  */
+audio {
+  width: 100%;
+}
+
+/* Old Browsers
+  ***************/
+
+/* Remove the border on images inside links in IE 10 and earlier */
+img {
+  border-style: none;
+}
+
+/* Hide the overflow in IE 10 and earlier */
+svg {
+  overflow: hidden;
+}
+
+/* Default block display on HTML5 elements */
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}
+
+/* Behind flag in Chromium 20240125
+  textarea { 
+    field-sizing: content;
+  }
+  */
+
+/*
+  * 1. Add the correct box sizing in IE 10
+  * 2. Remove the padding in IE 10
+  */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Navigation styles */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background-color: white;
+  z-index: 10;
+}
+
+nav ul {
+  padding-left: 0;
+}
+
+a {
+  padding: 0.3rem 1.25rem;
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+}
+
+a:hover,
+.active {
+  color: #0f172a;
+  background-color: #f1f5f9;
+  border-radius: 0.5rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: inline;
+}
+
+.dropdown {
+  display: hidden;
+}
+
+/* header styles */
+header h1 {
+  font-size: 3.6rem;
+  text-align: center;
+}
+
+header iframe {
+  width: 97%;
+  height: 37.5rem;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+main {
+  padding: 1.25rem 1.5rem;
+}
+
+/* About Pianist section */
+.text-with-background {
+  position: relative;
+}
+
+.text-with-background::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.text-with-background img {
+  width: 100%;
+  height: 37.5;
+  object-fit: cover;
+}
+
+.text-with-background-content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 90%;
+  color: #fff;
+}
+
+.about-pianist-content {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-pianist-content .quote {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.about-pianist-content .about {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.pianist-image img {
+  width: 50rem;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 2.25rem;
+}
+
+.about .pianist-info h2 {
+  font-size: 2.25rem;
+}
+
+.about .pianist-info p {
+  font-size: 1.75rem;
+}
+
+.customer-review {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  align-items: center;
+  justify-content: center;
+}
+.courses {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  align-items: center;
+  justify-content: center;
+}
+.all-courses {
+  display: flex;
+  align-items: center;
+}
+.courses a {
+  text-decoration: none;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 2.5rem 0.625rem;
+  padding: 0.625rem;
+  border: 0.125rem solid #f1f5f9;
+  border-radius: 1rem;
+  gap: 1.8rem;
+}
+
+.v-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 2.5rem 0.625rem;
+  padding: 0.625rem;
+  border: 0.125rem solid #f1f5f9;
+  border-radius: 1rem;
+  gap: 1.8rem;
+}
+
+.card img {
+  width: 12.5rem;
+  height: 12.5rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.card h3 {
+  display: inline;
+  margin-top: 0;
+  text-decoration: none;
+}
+
+.card p {
+  margin: 0.625rem 0;
+}
+
+.card .container .title {
+  margin-top: 0.625rem;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.card .container .title span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.card .container p {
+  font-size: 0.875rem;
+  color: #334155;
+}
+
+.about-us-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.about-us h1,
+h2 {
+  text-align: center;
+  padding-top: 1.25rem;
+}
+
+.about-us p {
+  padding: 1.25rem 1.8rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Footer styles */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+footer p {
+  padding: 1.25rem 1.8rem;
+}
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.field input,
+textarea {
+  padding: 1.25rem 2rem;
+}
+.social-media {
+  display: flex;
+  gap: 1.25rem;
+}
+.student-table {
+  margin-top: 1.5rem;
+}
+
+.table-container {
+  width: 100%;
+}
+
+.student-table h3 {
+  margin-bottom: 0.625rem;
+}
+
+.student-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.student-table table caption {
+  font-weight: bold;
+  margin-bottom: 0.625rem;
+}
+.student-table table th,
+.student-table table td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+}
+
+.student-table table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  text-align: left;
+}
+
+.student-table table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.student-table table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* reduce animation for users that don't like it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    position: static;
+    row-gap: 1rem;
+    column-gap: 1rem;
+  }
+  nav {
+    /* top: 0;
+    left: 0; */
+    position: static;
+    background-color: #faf0cd;
+    display: flex;
+    /* width: 100%; */
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  body {
+    padding-top: 0;
+  }
+  .about-pianist {
+    width: 100%;
+    background-image: url("../images/piano.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .pianist {
+    display: none;
+  }
+  .text-with-background::before {
+    position: static;
+  }
+  .text-with-background-content {
+    position: static;
+  }
+  .about .pianist-info h2 {
+    font-size: 1.25rem;
+  }
+
+  .about .pianist-info p {
+    font-size: 0.75rem;
+  }
+  .all-courses {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .customer-review {
+    flex-direction: column;
+  }
+  .about-us h1,
+  h2 {
+    text-align: center;
+  }
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .testimonials .card img {
+    width: 20%;
+    height: 20%;
+  }
+}
